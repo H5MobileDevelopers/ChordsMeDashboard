@@ -1,0 +1,61 @@
+<mat-card-content>
+  <div fxLayout="row" fxLayout.xs="column" class="mt-10">
+    <div fxFlex="5%">
+    </div>
+    <div fxFlex="20%">
+      <!--      <div class="logo-spacer"></div>-->
+<!--      <a routerLink="home"><img src="assets/images/logo2.png" width="100%"></a>-->
+    </div>
+    <div fxFlex="2%">
+    </div>
+    <div fxFlex="40%">
+
+      <div class="spacer"></div>
+
+      <mat-form-field class="example-full-width form-space">
+        <input  matInput placeholder="Search.." type="search">
+      </mat-form-field>
+      <mat-form-field class="form-space-margin">
+        <mat-select placeholder="Select Artist">
+          <mat-option value="All">Any</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button mat-stroked-button><mat-icon>search</mat-icon></button>
+    </div>
+    <div fxFlex="5%"></div>
+
+    <div fxFlex="15%">
+      <div class="spacer"></div>
+      <span class="span1">Call US Now</span><br/>
+      <span class="mobile"><b>071 1 491 219</b></span>
+    </div>
+
+    <div fxFlex="5%">
+      <div class="spacer"></div>
+<!--      <img src="assets/images/vl.png" width="50" height="50">-->
+    </div>
+
+    <div fxFlex="10%" style="cursor: pointer">
+      <div class="spacer"></div>
+      <mat-icon  [matBadge]="1" matBadgePosition="after" matBadgeColor="warn">shopping_cart</mat-icon>
+      <mat-icon style="margin-left: 25px;">person</mat-icon>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayout.xs="column" class="mt-10">
+    <mat-toolbar color="primary">
+      <div fxFlex="45%"></div>
+      <a fxFlex="10%" routerLink="home" mat-list-item  routerLinkActive="active-list-item">Home</a>
+      <a fxFlex="10%" routerLink="chords" mat-list-item  routerLinkActive="active-list-item">Chords</a>
+      <a fxFlex="10%" routerLink="artist" mat-list-item  routerLinkActive="active-list-item">Artist</a>
+      <a  class="dropdown" fxFlex="5%">
+        <mat-icon class="dropbtn" style="margin-top: 7px; cursor: pointer">person_pin</mat-icon>
+        <div class="dropdown-content">
+          <a><mat-icon class="icon-drop">verified_user</mat-icon> Profile</a>
+          <a><mat-icon class="icon-drop">assignment</mat-icon> Orders</a>
+          <a><mat-icon class="icon-drop">settings</mat-icon> Settings</a>
+          <a><mat-icon class="icon-drop">explore</mat-icon> Logout</a>
+        </div>
+      </a>
+    </mat-toolbar>
+  </div>
+</mat-card-content>

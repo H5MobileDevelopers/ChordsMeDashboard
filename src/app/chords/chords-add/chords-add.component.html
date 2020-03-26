@@ -1,0 +1,58 @@
+<mat-card>
+  <mat-card-header>
+    <span>{{chord? 'Edit Chord': 'New Chord' }}</span>
+    <span class="fill-remaining-space"></span>
+    <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-1"><mat-icon>clear</mat-icon></button>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="form" class="normal-form" (submit)="onSave()">
+      <mat-grid-list cols="2" rowHeight="450px">
+        <mat-grid-tile>
+          <div class="controles-container">
+            <mat-form-field>
+              <input formControlName="song" matInput placeholder="Song">
+              <mat-error>This field is mandatory.</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+              <input formControlName="beat" matInput placeholder="Beat">
+              <mat-error>This field is mandatory.</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+              <input formControlName="key" matInput placeholder="Key">
+              <mat-error>This field is mandatory.</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-select matNativeControl formControlName="artistCode" placeholder="Artist">
+                <mat-option *ngFor="let artist of artists" [value]="artist.code">{{artist.name}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+              <textarea rows="4" matInput formControlName="keywords" placeholder="Keywords"></textarea>
+              <mat-error>This field is mandatory.</mat-error>
+            </mat-form-field>
+
+          </div>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <div class="controles-container">
+
+            <mat-form-field>
+              <textarea rows="20" matInput formControlName="chords" placeholder="Chords"></textarea>
+              <mat-error>This field is mandatory.</mat-error>
+            </mat-form-field>
+
+            <br/><br/>
+            <div class="button-row">
+              <button mat-raised-button color="primary" [disabled]="form.invalid">{{chord? 'Edit': 'Save' }}</button>
+            </div>
+          </div>
+        </mat-grid-tile>
+
+      </mat-grid-list>
+    </form>
+  </mat-card-content>
+</mat-card>
