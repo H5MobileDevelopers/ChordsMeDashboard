@@ -5,6 +5,7 @@ import {ChordsService} from '../services/chords.service';
 import {ChordsAddComponent} from './chords-add/chords-add.component';
 import {DialogService} from '../services/dialog.service';
 import {NotificationService} from '../services/notification.service';
+import {ArtistService} from '../services/artist.service';
 
 @Component({
   selector: 'app-chords',
@@ -12,13 +13,14 @@ import {NotificationService} from '../services/notification.service';
   styleUrls: ['./chords.component.scss']
 })
 export class ChordsComponent implements OnInit {
-  displayedColumns: string[] = ['song', 'beat', 'key', 'singer', 'artistCode', 'action'];
+  displayedColumns: string[] = ['song', 'beat', 'key', 'singer', 'artistCode', 'language', 'createdDate', 'action'];
   dataSource = new MatTableDataSource<Chord>();
   searchKey: string;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
   constructor(private chordsService: ChordsService,
               private dialogService: DialogService,
+              private artistService: ArtistService,
               private notificationService: NotificationService,
               private dialog: MatDialog) { }
 
@@ -62,6 +64,10 @@ export class ChordsComponent implements OnInit {
   onSearchClear() {
     this.searchKey = '';
     this.applyFilter();
+  }
+
+  loadAllArtistsToLocal() {
+    this.artistService.loadAllArtistsToLocal();
   }
 
   applyFilter() {

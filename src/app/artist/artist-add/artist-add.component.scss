@@ -1,0 +1,34 @@
+.mat-card{
+  background-color: rgb(255, 255, 255);
+  color: #000000;
+}
+
+div.container{
+  margin: 0px 40px;
+}
+
+.fill-remaining-space {
+  /* This fills the remaining space, by using flexbox.
+     Every toolbar row uses a flexbox row layout. */
+  flex: 1 1 auto;
+}
+
+
+/* filter controls */
+.search-div{
+  margin: 10px;
+}
+
+.button-row button{
+  margin: 5px;
+}
+
+.controles-container{
+  width: 100%;
+  height: 100%;
+  padding: 5%;
+}
+
+.controles-container > * {
+  width: 100%;
+}

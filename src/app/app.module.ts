@@ -14,6 +14,7 @@ import { ArtistAddComponent } from './artist/artist-add/artist-add.component';
 import { HomeComponent } from './home/home.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import {
+  MatAutocompleteModule,
   MatBadgeModule, MatButtonModule,
   MatCardModule, MatDialogModule,
   MatFormFieldModule, MatGridListModule,
@@ -58,7 +59,8 @@ import { ConfirmComponent } from './services/dialog/confirm/confirm.component';
     MatButtonModule,
     MatDialogModule,
     MatGridListModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatAutocompleteModule
   ],
   providers: [],
   bootstrap: [AppComponent],

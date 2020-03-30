@@ -10,7 +10,7 @@
         <mat-grid-tile>
           <div class="controles-container">
             <mat-form-field>
-              <input formControlName="song" matInput placeholder="Song">
+              <input formControlName="song" matInput placeholder="Song" (blur)="fillKeywords()">
               <mat-error>This field is mandatory.</mat-error>
             </mat-form-field>
 
@@ -25,14 +25,24 @@
             </mat-form-field>
 
             <mat-form-field>
-              <mat-select matNativeControl formControlName="artistCode" placeholder="Artist">
-                <mat-option *ngFor="let artist of artists" [value]="artist.code">{{artist.name}}</mat-option>
-              </mat-select>
+              <input matInput placeholder="Artists" [matAutocomplete]="auto"
+                     formControlName="artistCode">
+              <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                <mat-option *ngFor="let artist of filteredArtists | async" [value]="artist.code" (blur)="fillArtistToKeyword()">
+                  {{artist.name}}
+                </mat-option>
+              </mat-autocomplete>
             </mat-form-field>
 
             <mat-form-field>
-              <textarea rows="4" matInput formControlName="keywords" placeholder="Keywords"></textarea>
+              <textarea rows="3" matInput formControlName="keywords" placeholder="Keywords"></textarea>
               <mat-error>This field is mandatory.</mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-select matNativeControl formControlName="language" placeholder="Language">
+                <mat-option *ngFor="let language of languages" [value]="language.code">{{language.name}}</mat-option>
+              </mat-select>
             </mat-form-field>
 
           </div>
@@ -48,6 +58,7 @@
             <br/><br/>
             <div class="button-row">
               <button mat-raised-button color="primary" [disabled]="form.invalid">{{chord? 'Edit': 'Save' }}</button>
+              <button mat-raised-button type="button" (click)="onClear()" color="warn">Clear</button>
             </div>
           </div>
         </mat-grid-tile>
