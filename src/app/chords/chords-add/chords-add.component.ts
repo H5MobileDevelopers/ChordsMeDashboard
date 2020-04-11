@@ -68,6 +68,8 @@ export class ChordsAddComponent implements OnInit {
     if (this.form.valid) {
       this.form.get('createdDate').setValue(moment(new Date()).format('YYYY-MM-DD'));
       this.form.get('singer').setValue(this.findArtistByCode(this.form.value.artistCode));
+      const keywords = this.generateKeywords(this.form.value.keywords);
+      this.form.get('keywords').setValue(keywords);
       if (this.chord) {
         this.chordService.editChord(this.chord.id, this.form.value);
         this.notifyService.success('Successfully Updated.');
@@ -112,5 +114,17 @@ export class ChordsAddComponent implements OnInit {
     const artistName = this.findArtistByCode(this.form.value.artistCode) != null ? this.findArtistByCode(this.form.value.artistCode) : '';
     this.form.get('keywords').setValue((this.form.get('keywords').value != null ?
     this.form.get('keywords').value : '') + artistName.toLowerCase() + ',');
+  }
+
+  private generateKeywords(keywords) {
+    const keys = [];
+    keywords.split(',').forEach(key => {
+      if (key !== '') {
+        key.trim().split(' ').forEach(k => {
+          keys.push(k);
+        });
+      }
+    });
+    return keys;
   }
 }
